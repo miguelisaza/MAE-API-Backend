@@ -71,7 +71,7 @@ class LdapUserProvider implements UserProvider
      */
     public function retrieveByCredentials(array $credentials)
     {
-        
+
         if ($this->conect->verificarUsuario($credentials['code'], $credentials['password'])) {
             $user = $this->conect->getUsuario();
             return $user;
@@ -88,10 +88,13 @@ class LdapUserProvider implements UserProvider
      */
     public function validateCredentials(Authenticatable $user, array $credentials)
     {   
-        if ($user->getJWTIdentifier()==$credentials['code']&& $user->getAuthPassword()==$credentials['password']){
 
+        if ($user->getJWTIdentifier()==$credentials['code']
+            && $user->getAuthPassword()==($credentials['password'])
+        ){
             return true;
         }
+        dd("false vc");
         return false;
     }
 }
