@@ -15,6 +15,4 @@ class Cursante extends Eloquent
 	public $timestamps = false;
 
 	protected $table ="cursantes";
-
-
 }
