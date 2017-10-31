@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
+
+Route::resource('horarios', 'Schedule\ScheduleController', ['only' => ['index', 'show']]);
+Route::resource('cursantes', 'Cursante\CursanteController', ['only' => ['index', 'show']]);
