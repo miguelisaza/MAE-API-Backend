@@ -37,9 +37,12 @@ class Handler extends ExceptionHandler
     public function report(Exception $exception)
     {   
 
-         if ($exception instanceof ErrorException ) {
+         if ($exception instanceof QueryException ) {
                 dd("error");
             }
+            
+            
+            
         parent::report($exception);
     }
 

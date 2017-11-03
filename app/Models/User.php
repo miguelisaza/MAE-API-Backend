@@ -61,6 +61,10 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function getCode(){
+        return 'T00000021';
+    }
+    
 
 
 }

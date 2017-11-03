@@ -30,8 +30,8 @@ class LdapUserProvider implements UserProvider
      */
     public function retrieveById($identifier)
     {  
-        $code=\App\Models\User::find($identifier)->code;
-         if ($usuario= $this->conect->verificarUsuarioById($code)) {
+       // $code=\App\Models\User::find($identifier)->code;
+         if ($usuario= $this->conect->verificarUsuarioById($identifier)) {
             return $usuario;
         }
     }

@@ -20,4 +20,6 @@ Route::middleware('jwt.auth')->get('/user', function (Request $request) {
 	Route::post('login', 'ApiAuthController@authenticate');
 	Route::group(['middleware' => ['jwt.auth']], function () {
 		Route::resource('users', 'UserController');
+		Route::get('schedule/now', 'ScheduleController@now');
+		
 });	
