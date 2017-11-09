@@ -35,7 +35,11 @@ class Handler extends ExceptionHandler
      * @return void
      */
     public function report(Exception $exception)
-    {
+    {   
+
+         if ($exception instanceof ErrorException ) {
+                dd("error");
+            }
         parent::report($exception);
     }
 

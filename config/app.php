@@ -178,6 +178,13 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //JWT provider
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        //ldap provider
+
+        App\Providers\LdapAuthProvider::class,
+
+       
 
     ],
 
@@ -227,6 +234,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        //jwt alias
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        //Jwt pailoads aliases    
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
 
     ],
 
