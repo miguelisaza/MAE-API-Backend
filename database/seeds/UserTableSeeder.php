@@ -11,11 +11,11 @@ class UserTableSeeder extends Seeder {
 
 		// Usuario Test
 		User::create(array(
-				'fullName' => 'Eder',
+				'fullName' => 'Miguel',
 				'idRol' => 1,
-				'code' => 'T00030535',
+				'code' => 'T00032320',
 				'password' => 'test',
-				'email' => 'ederb1.1c@gmail.com'
+				'email' => 'elmiguelxd@hotmail.com'
 			));
 	}
 }
