@@ -15,7 +15,7 @@ class Schedule extends Eloquent
 	public $incrementing = false;
 	public $timestamps = false;
 
-	protected $table = 'schedules';
+	protected $table = 'horarios';
 
 
 }

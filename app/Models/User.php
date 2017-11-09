@@ -39,8 +39,6 @@ class User extends Authenticatable implements JWTSubject
         
     }
 
-    
-
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -61,6 +59,9 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public static function getCode(){
+        return 'T00019437';
+    }
 
 
 }
