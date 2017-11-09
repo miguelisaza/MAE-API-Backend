@@ -9,7 +9,7 @@
 
 namespace App\Auth;
 
-use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\UserProvider;
@@ -30,8 +30,8 @@ class LdapUserProvider implements UserProvider
      */
     public function retrieveById($identifier)
     {  
-        $code=\App\Models\User::find($identifier)->code;
-         if ($usuario= $this->conect->verificarUsuarioById($code)) {
+        //$code=User::find($identifier)->code;
+         if ($usuario= $this->conect->verificarUsuarioById($identifier)) {
             return $usuario;
         }
     }

@@ -20,10 +20,9 @@ Route::middleware('jwt.auth')->get('/user', function (Request $request) {
 	Route::post('login', 'ApiAuthController@authenticate');
 	Route::group(['middleware' => ['jwt.auth']], function () {
 		Route::resource('users', 'UserController');
+        Route::get('/now', 'Schedule\ScheduleController@now');
+        Route::resource('schedules', 'Schedule\ScheduleController', ['only' => ['index', 'show' ]]);
+        Route::resource('students', 'Cursante\CursanteController', ['only' => ['index', 'show']]);
 });
 
-Route::resource('schedules', 'Schedule\ScheduleController', ['only' => ['index', 'show' ]]);
-Route::get('/now', 'Schedule\ScheduleController@now');
 
-
-Route::resource('students', 'Cursante\CursanteController', ['only' => ['index', 'show']]);

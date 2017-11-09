@@ -61,7 +61,7 @@ class ScheduleController extends Controller
             ->select('e.ID' ,'e.NOMBRES','e.APELLIDOS','da.NRC','da.ASIGNATURA',DB::raw("cast(SUBSTRING(".$day.",1,LOCATE('-',".$day.")-1) as time ) as Inicio, cast(SUBSTRING(".$day.",7,LOCATE('-',".$day.")-1) as time ) as Fin "))
             ->distinct()->get();
 
-        $data = ["Day"=>$day,"Hour"=>$hour, "Schedule"=>$schedule];
+        $data = ["Day"=>$day,"Hour"=>$hour, "Students"=>$schedule];
 
         return response()
             ->json(compact('data'));
