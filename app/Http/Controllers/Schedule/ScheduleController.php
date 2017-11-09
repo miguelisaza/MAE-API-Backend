@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use DB;
+use JWTAuth;
+use App\Http\Requests;
+
+
 
 class ScheduleController extends Controller
 {
@@ -45,7 +49,7 @@ class ScheduleController extends Controller
 			,cast(SUBSTRING(dia,7,LOCATE('-',dia)-1) as time ) as Fin
           from datos_academicos as da
           join estudiantes as e on e.id=da.id
-          where ID_DOCENTE = 'T00019437'  and
+          where ID_DOCENTE = 'codigo_profesor'  and
           cast(SUBSTRING(dia,1,LOCATE('-',dia)-1) as time ) between CONCAT(LEFT(curtime(),3),'00:00') and curtime()
 
 
@@ -56,7 +60,7 @@ class ScheduleController extends Controller
 
         $schedule=DB::table("datos_academicos as da")
             ->join("estudiantes as e","e.id","=","da.id")
-            ->where("ID_DOCENTE",DB::raw("'".User::getCode()."'" ))
+            ->where("ID_DOCENTE",DB::raw("'".\Auth::user()->getCode()."'" ))
             ->whereRaw(DB::raw("cast(SUBSTRING(".$day.",1,LOCATE('-',".$day.")-1) as time ) between CONCAT(LEFT(curtime(),3),'00:00') and curtime()"))
             ->select('e.ID' ,'e.NOMBRES','e.APELLIDOS','da.NRC','da.ASIGNATURA',DB::raw("cast(SUBSTRING(".$day.",1,LOCATE('-',".$day.")-1) as time ) as Inicio, cast(SUBSTRING(".$day.",7,LOCATE('-',".$day.")-1) as time ) as Fin "))
             ->distinct()->get();

@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use JWTAuth;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -60,7 +61,20 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public static function getCode(){
-        return 'T00019437';
+
+        /**
+         * Retorna el código de la persona que está en sesión
+         *
+         * Codigo de ejemplo profesor Isaac Zúñiga
+         * se puede usar para probar el método ScheduleController@now
+         *
+         return 'T00000021'
+         *
+         * @return string
+         *
+         */
+
+        return \Auth::user()->code;
     }
 
 
