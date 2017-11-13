@@ -14,6 +14,12 @@ class User extends Authenticatable implements JWTSubject
     
     protected $hidden = array('remember_token','password');
 
+    public function rol(){
+
+        return $this->hasOne(Rol::Class);
+
+    }
+
     public function scopeFilters($query,$datos){
     	if(isset($datos["fullname"])){
     		$query->where("fullname",'like',"%".$datos["fullname"]."%");

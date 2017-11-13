@@ -15,13 +15,8 @@ use App\Http\Requests;
 
 class ScheduleController extends Controller
 {
-
     protected static $days=["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $schedules = Schedule::all();
@@ -60,7 +55,7 @@ class ScheduleController extends Controller
 
         $schedule=DB::table("datos_academicos as da")
             ->join("estudiantes as e","e.id","=","da.id")
-            ->where("ID_DOCENTE",DB::raw("'".\Auth::user()->getCode()."'" ))
+            ->whereRaw("ID_DOCENTE",DB::raw("'".\Auth::user()->getCode()."'" ))
             ->whereRaw(DB::raw("cast(SUBSTRING(".$day.",1,LOCATE('-',".$day.")-1) as time ) between CONCAT(LEFT(curtime(),3),'00:00') and curtime()"))
             ->select('e.ID' ,'e.NOMBRES','e.APELLIDOS','da.NRC','da.ASIGNATURA',DB::raw("cast(SUBSTRING(".$day.",1,LOCATE('-',".$day.")-1) as time ) as Inicio, cast(SUBSTRING(".$day.",7,LOCATE('-',".$day.")-1) as time ) as Fin "))
             ->distinct()->get();
@@ -71,6 +66,4 @@ class ScheduleController extends Controller
             ->json(compact('data'));
 
     }
-
-
 }

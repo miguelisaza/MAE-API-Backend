@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder {
 				'fullName' => 'Miguel',
 				'idRol' => 1,
 				'code' => 'T00032320',
-				'password' => 'test',
+				'password' => 'xxxxxx',
 				'email' => 'elmiguelxd@hotmail.com'
 			));
 	}
