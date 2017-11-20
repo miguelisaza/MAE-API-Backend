@@ -71,16 +71,18 @@ class User extends Authenticatable implements JWTSubject
         /**
          * Retorna el código de la persona que está en sesión
          *
-         * Codigo de ejemplo profesor Isaac Zúñiga
+         * Codigo de ejemplo profesor Jairo
          * se puede usar para probar el método ScheduleController@now
          *
-         return 'T00000021'
          *
          * @return string
-         *
+         * TODO: cambiar codigo ejemplo por lo que esta aqui abajo - retorna el usuario logueado
+         *return \Auth::user()->code;
          */
 
-        return \Auth::user()->code;
+        return 'T00010915';
+
+
     }
 
 

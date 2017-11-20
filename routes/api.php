@@ -23,7 +23,7 @@ Route::middleware('jwt.auth')->get('/user', function (Request $request) {
         Route::get('/now', 'Schedule\ScheduleController@now');
         Route::resource('schedules', 'Schedule\ScheduleController', ['only' => ['index', 'show' ]]);
         Route::resource('students', 'Cursante\CursanteController', ['only' => ['index', 'show']]);
-        Route::resource('missing', 'MissingController', ['only' => ['index', 'show', 'store']]);
+        Route::resource('missing', 'MissingController', ['only' => ['index', 'store']]);
 
 });
 

@@ -19,7 +19,7 @@ class ScheduleController extends Controller
 
     public function index()
     {
-        $schedules = Schedule::all();
+        $schedules = Schedule::findMany(User::getCode());
 
         return $schedules;
     }
