@@ -56,8 +56,8 @@ return [
 
         'mysql2' => [
             'driver' => 'mysql',
-            'host' => env('SIRIUS_DB_HOSTDB_HOST', '127.0.0.1'),
-            'port' => env('SIRIUS_DB_PORTDB_PORT', '3306'),
+            'host' => env('SIRIUS_DB_HOST', '127.0.0.1'),
+            'port' => env('SIRIUS_DB_PORT', '3306'),
             'database' => env('SIRIUS_DB_DATABASE', 'forge'),
             'username' => env('SIRIUS_DB_USERNAME', 'forge'),
             'password' => env('SIRIUS_DB_PASSWORD', ''),
