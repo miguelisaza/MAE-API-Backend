@@ -54,15 +54,20 @@ class MissingController extends Controller
          *
          */
 
-        $course = DB::table("missing as m")
+        $missed = DB::table("missing as m")
             ->join('estudiantes as e','e.id','=','m.idEstudiante')
-            ->whereRaw('nrc', "'".$nrc."'")
+            ->where('nrc', $nrc)
             ->select('m.idEstudiante as CODIGO', 'e.NOMBRES','e.APELLIDOS','e.PROGRAMA', 'm.created_at as FECHA_FALTA')
             ->distinct()
 
             ->get();
 
-        return response()->json($course, 200);
+        $data = ["NRC"=>$nrc,"FALTANTES"=>$missed];
+
+        return response()
+            ->json(compact('data'));
+
+        //return response()->json('Curso'=>$nrc ,'Faltantes'=>$missed, 200);
 
     }
 
